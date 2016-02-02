@@ -78,16 +78,17 @@ for i in sphereVertexList:
     __u= 0.5+(math.atan2(dirVec[2],dirVec[0]) / (2*math.pi))
     
     __v=0.5+math.asin(dirVec[1])/math.pi
-    print "__u=%f, __v=%f"%(__u,__v)
+    #print "__u=%f, __v=%f"%(__u,__v)
 
     # the colour components at the uv referred to by the current values fu and fv are returned and
     # assigned to the variable named 'sample'
-    sample = cmds.colorAtPoint( 'file1', output ='RGBA', u = __u+0.7, v = __v+0.7 )
+    sample = cmds.colorAtPoint( 'file1', output ='RGBA', u = -__u-0.05, v = -__v )
     #print "sample=%s"%sample
     		
     #0.19607841968536377, 0.5803921222686768, 0.003921568393707275
-    if sample[1] == 0.5803921222686768: # checks if the blue component is less than 0.7
+    if sample[0] == 0.9294117093086243 and sample[1] ==0.10588234663009644: # checks if the blue component is less than 0.7
         locate_object(spherePoint[0], spherePoint[1], spherePoint[2])		
+        print "sample=%s"%sample
     
     	
     
